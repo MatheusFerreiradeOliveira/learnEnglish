@@ -21,7 +21,19 @@ export class PostagemService {
         return this.postagemModel.findById(id)
     }
 
-    delete(dto: Postagem) {
-        return this.postagemModel.deleteOne(dto)
+    update(id: string, dto: Postagem) {
+        return this.postagemModel.updateOne(
+            { _id: id }, //Isso aqui é o filtro, o primeiro q der match com esses parametros que é mudado
+            {
+                $set: {descricao: dto.descricao, titulo: dto.titulo} // aqui a gente escolhe os campos para mudar 
+                //ex: aqui to mudando a descricao e o titulo
+            }
+        )
+    }
+
+    delete(id: string) {
+        return this.postagemModel.deleteOne(
+            {_id: id} //deleta a primeira ocorrencia que tiver esse id
+        )
     }
 }   

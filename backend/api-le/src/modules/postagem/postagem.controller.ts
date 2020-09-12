@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { throws } from 'assert';
 import { Postagem } from './postagem.schema';
 import { PostagemService } from './postagem.service';
@@ -21,5 +21,15 @@ export class PostagemController {
     @Get(":id")
     getById(@Param("id") id: string) {
         return this.postagemService.getById(id);
+    }
+
+    @Put(":id")
+    update(@Param("id") id:string, @Body() dto: Postagem) {
+        return this.postagemService.update(id, dto);
+    }
+
+    @Delete(":id")
+    delete(@Param("id") id: string) {
+        return this.postagemService.delete(id)
     }
 }

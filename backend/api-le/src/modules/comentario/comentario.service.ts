@@ -21,7 +21,19 @@ export class ComentarioService {
         return this.comentarioModel.findById(id)
     }
 
-    delete(dto: Comentario) {
-        return this.comentarioModel.deleteOne(dto)
+    update(id: string, dto: Comentario) {
+        return this.comentarioModel.updateOne(
+            { _id: id }, //Isso aqui é o filtro, o primeiro q der match com esses parametros que é mudado
+            {
+                $set: {descricao: dto.descricao} // aqui a gente escolhe os campos para mudar
+                //ex: aqui to mudando a descricao
+            }
+        )
+    }
+
+    delete(id: string) {
+        return this.comentarioModel.deleteOne(
+            {_id: id} //deleta a primeira ocorrencia que tiver esse id
+        )
     }
 }   
