@@ -12,6 +12,7 @@ export class Comentario extends Document {
         type: mongoose.Schema.Types.ObjectId
         ref: Usuario
     }
+    @Prop()
     postagem: {
         type: mongoose.Schema.Types.ObjectId
         ref: Postagem
