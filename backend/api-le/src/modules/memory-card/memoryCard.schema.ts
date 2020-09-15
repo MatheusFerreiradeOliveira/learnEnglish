@@ -1,22 +1,16 @@
-import mongoose, { Document } from 'mongoose'
-import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
+import mongoose, { Document } from 'mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Usuario } from '../usuario/usuario.schema';
 import { Postagem } from '../postagem/postagem.schema';
 
-@Schema({collection: 'memoryCard'})
+@Schema({ collection: 'memoryCard' })
 export class MemoryCard extends Document {
-    @Prop()
-    descricao: string
-    @Prop()
-    responsavel: {
-        type: mongoose.Schema.Types.ObjectId
-        ref: Usuario
-    }
-    @Prop()
-    postagem: {
-        type: mongoose.Schema.Types.ObjectId
-        ref: Postagem
-    }
-} 
+  @Prop()
+  palavra: string;
+  @Prop()
+  significado: string[];
+  @Prop()
+  frases: string[];
+}
 
-export const MemoryCardSchema = SchemaFactory.createForClass(MemoryCard)
+export const MemoryCardSchema = SchemaFactory.createForClass(MemoryCard);
