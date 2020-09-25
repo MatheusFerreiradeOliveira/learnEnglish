@@ -1,10 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { Comentario } from './schemas/comentario.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
+import { Comentario } from '../../schemas/comentario.schema';
+import { IComentarioRepository } from '../i-comentario.repository';
 
-@Injectable()
-export class ComentarioService {
+export class ComentarioMongoRepository implements IComentarioRepository {
   constructor(
     @InjectModel(Comentario.name)
     private comentarioModel: Model<Comentario>,
