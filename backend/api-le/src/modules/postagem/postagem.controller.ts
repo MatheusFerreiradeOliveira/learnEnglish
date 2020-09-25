@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { throws } from 'assert';
-import { Postagem } from './postagem.schema';
+import { Postagem } from './schemas/postagem.schema';
 import { PostagemService } from './postagem.service';
 
 @Controller('postagems')

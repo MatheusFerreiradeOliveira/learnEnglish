@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Postagem } from './postagem.schema';
+import { Postagem } from './schemas/postagem.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'
 

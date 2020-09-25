@@ -1,7 +1,7 @@
 import mongoose, { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Usuario } from '../usuario/usuario.schema';
-import { Comentario } from '../comentario/schemas/comentario.schema';
+import { Usuario } from '../../usuario/usuario.schema';
+import { Comentario } from '../../comentario/schemas/comentario.schema';
 
 @Schema({ collection: 'comentario' })
 export class Postagem extends Document {
