@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { MemoryCard } from './memoryCard.schema';
+import { MemoryCard } from './schemas/memoryCard.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'
 

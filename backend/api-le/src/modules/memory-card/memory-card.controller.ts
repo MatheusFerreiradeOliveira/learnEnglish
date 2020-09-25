@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { throws } from 'assert';
-import { MemoryCard } from './memoryCard.schema';
+import { MemoryCard } from './schemas/memoryCard.schema';
 import { MemoryCardService } from './memory-card.service';
 
 @Controller('memoryCards')
