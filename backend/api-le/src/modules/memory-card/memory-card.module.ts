@@ -12,6 +12,8 @@ import { DeleteUseCase } from './usecases/delete/delete.usecase';
 import { FindByIdService } from './usecases/find-by-id/find-by-id.service';
 import { FindByIdUseCase } from './usecases/find-by-id/find-by-id.usecase';
 import { MemoryCardMongoRepository } from './repository/implementations/memory-card-mongo.repository';
+import { UpdateService } from './usecases/update/update.service';
+import { UpdateUseCase } from './usecases/update/update.usecase';
 
 @Module({
   imports: [
@@ -27,6 +29,8 @@ import { MemoryCardMongoRepository } from './repository/implementations/memory-c
     CreateUseCase,
     FindAllService,
     FindAllUseCase,
+    UpdateService,
+    UpdateUseCase,
     DeleteService,
     DeleteUseCase,
     { provide: 'IMemoryCardRepository', useClass: MemoryCardMongoRepository },

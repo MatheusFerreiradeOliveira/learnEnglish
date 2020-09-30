@@ -1,5 +1,6 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose'
+import { MemoryMeasurement } from 'vm';
 import { MemoryCard } from "../../schemas/memoryCard.schema";
 import { IMemoryCardRepository } from "../i-memory-card.repository";
 
@@ -21,6 +22,17 @@ export class MemoryCardMongoRepository implements IMemoryCardRepository {
 
     getById(id: string) {
         return this.memoryCardModel.findById(id)
+    }
+
+    update(id: string, dto: MemoryCard) {
+        return this.memoryCardModel.updateOne(
+            {_id: id},
+            {
+                palavra: dto.palavra,
+                significado: dto.significado,
+                frases: dto.frases
+            }
+        )
     }
 
     delete(id: string) {
