@@ -4,10 +4,10 @@ import { Postagem } from '../../schemas/postagem.schema';
 @Injectable()
 export class DeleteUseCase {
   constructor(
-    @Inject('IComentarioRepository')
-    private iComentarioRepository: IPostagemRepository,
+    @Inject('IPostagemRepository')
+    private iPostagemRepository: IPostagemRepository,
   ) {}
   async execute(id: string): Promise<Postagem> {
-    return await this.iComentarioRepository.delete(id);
+    return await this.iPostagemRepository.delete(id);
   }
 }
