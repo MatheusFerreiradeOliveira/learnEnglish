@@ -7,6 +7,9 @@ import { UsuarioModule } from './modules/usuario/usuario.module';
 import { MemoryCardModule } from './modules/memory-card/memory-card.module';
 import { TipoPerfilModule } from './modules/tipo-perfil/tipo-perfil.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PermissaoModule } from './modules/permissao/permissao.module';
+import { SignificadoModule } from './modules/significado/significado.module';
+import { FraseModule } from './modules/frase/frase.module';
 
 @Module({
   imports: [
@@ -18,6 +21,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     UsuarioModule,
     MemoryCardModule,
     TipoPerfilModule,
+    PermissaoModule,
+    SignificadoModule,
+    FraseModule,
   ],
   controllers: [AppController],
   providers: [AppService],
