@@ -4,10 +4,10 @@ import { Postagem } from '../../schemas/postagem.schema';
 @Injectable()
 export class UpdateUseCase {
   constructor(
-    @Inject('IComentarioRepository')
-    private iComentarioRepository: IPostagemRepository,
+    @Inject('IPostagemRepository')
+    private iPostagemRepository: IPostagemRepository,
   ) {}
   async execute(id: string, dto: Postagem): Promise<Postagem> {
-    return await this.iComentarioRepository.update(id, dto);
+    return await this.iPostagemRepository.update(id, dto);
   }
 }

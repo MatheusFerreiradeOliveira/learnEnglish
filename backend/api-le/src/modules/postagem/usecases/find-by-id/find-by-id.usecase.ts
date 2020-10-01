@@ -5,9 +5,9 @@ import { Postagem } from '../../schemas/postagem.schema';
 export class FindByIdUseCase {
   constructor(
     @Inject('IPostagemRepository')
-    private iComentarioRepository: IPostagemRepository,
+    private iPostagemRepository: IPostagemRepository,
   ) {}
   async execute(id: string): Promise<Postagem> {
-    return await this.iComentarioRepository.getById(id);
+    return await this.iPostagemRepository.getById(id);
   }
 }

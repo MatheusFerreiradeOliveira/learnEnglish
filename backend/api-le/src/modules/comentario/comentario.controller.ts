@@ -14,22 +14,30 @@ import { Comentario } from './schemas/comentario.schema';
 import { ComentarioService } from './comentario.service';
 import { FindByIdService } from './usecases/find-by-id/find-by-id.service';
 import { Request, Response } from 'express';
+import { UpdateService } from './usecases/update/update.service';
+import { DeleteService } from './usecases/delete/delete.service';
+import { FindAllService } from './usecases/find-all/find-all.service';
+import { CreateService } from './usecases/create/create.service';
 
 @Controller('comentarios')
 export class ComentarioController {
   constructor(
     private comentarioService: ComentarioService,
+    private createService: CreateService,
+    private findAllService: FindAllService,
     private findByIdService: FindByIdService,
+    private updateService: UpdateService,
+    private deleteService: DeleteService
   ) {}
 
   @Post()
-  create(@Body() dto: Comentario) {
-    return this.comentarioService.create(dto);
+  create(@Body() dto: Comentario, @Req() req: Request, @Res() res: Response) {
+    return this.createService.handle(dto, req, res);
   }
 
   @Get()
-  getAll() {
-    return this.comentarioService.getAll();
+  getAll(@Req() req: Request, @Res() res: Response) {
+    return this.findAllService.handle(req, res);
   }
 
   @Get(':id')
@@ -38,12 +46,12 @@ export class ComentarioController {
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: Comentario) {
-    return this.comentarioService.update(id, dto);
+  update(@Param('id') id: string, @Body() dto: Comentario, @Req() req: Request, @Res() res: Response) {
+    return this.updateService.handle(id, dto, req, res);
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    return this.comentarioService.delete(id);
+  delete(@Param('id') id: string, @Req() req: Request, @Res() res: Response) {
+    return this.deleteService.handle(id, req, res);
   }
 }

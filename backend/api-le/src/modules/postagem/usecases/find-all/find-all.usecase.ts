@@ -4,10 +4,10 @@ import { Postagem } from '../../schemas/postagem.schema';
 @Injectable()
 export class FindAllUseCase {
   constructor(
-    @Inject('IComentarioRepository')
-    private iComentarioRepository: IPostagemRepository,
+    @Inject('IPostagemRepository')
+    private iPostagemRepository: IPostagemRepository,
   ) {}
   async execute(): Promise<Postagem> {
-    return await this.iComentarioRepository.getAll();
+    return await this.iPostagemRepository.getAll();
   }
 }
