@@ -1,7 +1,8 @@
 import mongoose, { Document } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Usuario } from '../../usuario/usuario.schema';
+
 import { Postagem } from '../../postagem/schemas/postagem.schema';
+import { User } from 'src/modules/user/schemas/user.schema';
 
 @Schema({ collection: 'comentario' })
 export class Comentario extends Document {
@@ -10,7 +11,7 @@ export class Comentario extends Document {
   @Prop()
   responsavel: {
     type: mongoose.Schema.Types.ObjectId;
-    ref: Usuario;
+    ref: User;
   };
   @Prop()
   postagem: {

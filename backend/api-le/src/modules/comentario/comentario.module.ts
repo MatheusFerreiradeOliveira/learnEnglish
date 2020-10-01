@@ -36,7 +36,7 @@ import { DeleteUseCase } from './usecases/delete/delete.usecase';
     DeleteUseCase,
     { provide: 'IComentarioRepository', useClass: ComentarioMongoRepository },
   ],
-  exports: [ComentarioService],
   controllers: [ComentarioController],
+  exports: [ComentarioService],
 })
 export class ComentarioModule {}
