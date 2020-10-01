@@ -8,7 +8,7 @@ export class FindAllUseCase {
     @Inject('IPermissaoRepository')
     private iPermissaoRepository: IPermissaoRepository
   ) {}
-  async execute(): Promise<Permissao> {
+  async execute(): Promise<Permissao[]> {
     return await this.iPermissaoRepository.getAll();
   }
 }

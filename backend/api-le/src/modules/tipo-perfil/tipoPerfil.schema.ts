@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, {Document} from 'mongoose';
 import { MongooseModule, Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ collection: 'tipo-perfil' })

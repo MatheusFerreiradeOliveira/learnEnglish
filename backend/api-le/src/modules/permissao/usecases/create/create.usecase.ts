@@ -5,7 +5,7 @@ import { Permissao } from '../../schemas/permissao.schema';
 @Injectable()
 export class CreateUseCase {
   constructor(
-    @Inject('IPermissionRepository')
+    @Inject('IPermissaoRepository')
     private iPermissionRepository: IPermissaoRepository
   ) {}
   async execute(dto: Permissao): Promise<Permissao> {

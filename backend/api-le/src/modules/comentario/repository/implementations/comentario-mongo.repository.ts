@@ -24,17 +24,17 @@ export class ComentarioMongoRepository implements IComentarioRepository {
 
   update(id: string, dto: Comentario) {
     return this.comentarioModel.updateOne(
-      { _id: id }, //Isso aqui é o filtro, o primeiro q der match com esses parametros que é mudado
+      { _id: id },
       {
-        $set: { descricao: dto.descricao }, // aqui a gente escolhe os campos para mudar
-        //ex: aqui to mudando a descricao
+        descricao: dto.descricao,
+        likes: dto.likes      
       },
     );
   }
 
   delete(id: string) {
     return this.comentarioModel.deleteOne(
-      { _id: id }, //deleta a primeira ocorrencia que tiver esse id
+      { _id: id },
     );
   }
 }
