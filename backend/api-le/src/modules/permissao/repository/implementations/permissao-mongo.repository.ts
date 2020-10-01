@@ -10,32 +10,33 @@ export class PermissaoMongoRepository implements IPermissaoRepository {
         private permissaoModel: Model<Permissao>,
     ) {}
     
-    create(dto: Permissao) {
+    create(dto: Permissao): Promise<Permissao> {
         const newPermission = new this.permissaoModel(dto);
         return newPermission.save();
     }
 
-    getAll() {
-        return this.permissaoModel.find()
+    getAll(): Promise<Permissao[]> {
+        return this.permissaoModel.find().exec()
     }
 
-    getById(id: string) {
-        return this.permissaoModel.findById(id)
+    getById(id: string): Promise<Permissao> {
+        return this.permissaoModel.findById(id).exec()
     }
 
-    update(id: string, dto: Permissao) {
+    update(id: string, dto: Permissao): Promise<Permissao> {
         return this.permissaoModel.update(
             {_id: id},
             {
                 descricao: dto.descricao,
                 tipoPerfil: dto.tipoPerfil
             }
-        );
+        ).exec();
     }
 
-    delete(id: string) {
-        return this.permissaoModel.deleteOne(
+    delete(id: string): Promise<void> {
+        this.permissaoModel.deleteOne(
             {_id: id},
-        )
+        ).exec()
+        return;
     }
 }

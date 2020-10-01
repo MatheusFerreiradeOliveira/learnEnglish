@@ -8,7 +8,7 @@ import { FindAllService } from './usecases/find-all/find-all.service';
 import { FindByIdService } from './usecases/find-by-id/find-by-id.service';
 import { UpdateService } from './usecases/update/update.service';
 
-@Controller('permissao')
+@Controller('permissoes')
 export class PermissaoController {
     constructor(
       private fraseService: PermissaoService,

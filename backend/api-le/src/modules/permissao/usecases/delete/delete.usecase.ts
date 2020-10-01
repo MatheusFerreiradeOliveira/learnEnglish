@@ -8,7 +8,7 @@ export class DeleteUseCase {
     @Inject('IPermissaoRepository')
     private iPermissaoRepository: IPermissaoRepository
   ) {}
-  async execute(id: string): Promise<Permissao> {
+  async execute(id: string): Promise<void> {
     return await this.iPermissaoRepository.delete(id);
   }
 }

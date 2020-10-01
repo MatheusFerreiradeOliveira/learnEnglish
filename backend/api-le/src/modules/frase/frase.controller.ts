@@ -19,7 +19,7 @@ import {
   import { UpdateService } from './usecases/update/update.service';
   import { DeleteService } from './usecases/delete/delete.service';
   
-  @Controller('frase')
+  @Controller('frases')
   export class FraseController {
     constructor(
       private fraseService: FraseService,

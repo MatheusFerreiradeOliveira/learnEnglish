@@ -9,6 +9,8 @@ export class Comentario extends Document {
   @Prop()
   descricao: string;
   @Prop()
+  likes: number;
+  @Prop()
   responsavel: {
     type: mongoose.Schema.Types.ObjectId;
     ref: User;

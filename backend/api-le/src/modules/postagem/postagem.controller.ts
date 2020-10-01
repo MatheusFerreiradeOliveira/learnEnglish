@@ -9,7 +9,7 @@ import { FindByIdService } from './usecases/find-by-id/find-by-id.service';
 import { UpdateService } from './usecases/update/update.service';
 import { DeleteService } from './usecases/delete/delete.service';
 
-@Controller('postagems')
+@Controller('postagens')
 export class PostagemController {
     
     constructor(

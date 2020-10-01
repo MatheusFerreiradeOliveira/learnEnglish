@@ -1,9 +1,9 @@
 import { Permissao } from "../schemas/permissao.schema";
 
 export interface IPermissaoRepository {
-    create(dto: Permissao)
-    getAll()
-    getById(id: string)
-    update(id: string, dto: Permissao)
-    delete(id: string)
+    create(dto: Permissao): Promise<Permissao>;
+    getAll(): Promise<Permissao[]>
+    getById(id: string): Promise<Permissao>
+    update(id: string, dto: Permissao): Promise<Permissao>
+    delete(id: string): Promise<void>
 }
