@@ -1,17 +1,15 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post, Req, Res } from '@nestjs/common';
 import { User } from './schemas/user.schema';
 import { CreateService } from './usecases/create/create.service';
 import { Request, Response } from 'express';
+import { CreateUserDTO } from './dto/create-user.dto';
 
 @Controller('users')
 export class UserController {
-  constructor(
-    @Inject()
-    private createService: CreateService,
-  ) {}
+  constructor(private createService: CreateService) {}
 
   @Post()
-  async create(req: Request, res: Response) {
-    return this.createService.handle(req.body, req, res);
+  async create(@Req() req: Request, @Res() res: Response) {
+    return this.createService.handle(req.body, res);
   }
 }

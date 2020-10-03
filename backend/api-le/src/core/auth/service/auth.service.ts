@@ -1,35 +1,37 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { FindByEmailService } from '../../../modules/user/usecases/find-by-email/find-by-email.service';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    @Inject()
-    private usersFindByEmailService: FindByEmailService,
-  ) {}
+  constructor(private usersFindByEmailService: FindByEmailService) {}
 
   async validateUser(userEmail: string, userPassword: string) {
     try {
       const user = await this.usersFindByEmailService.handle(userEmail);
-
-      const isPasswordMatching = await bcrypt.compare(
-        userPassword,
-        user.password,
-      );
-      if (!isPasswordMatching) {
-        throw new HttpException(
-          'Wrong credentials provided',
-          HttpStatus.BAD_REQUEST,
-        );
-      }
+      await this.verifyPassword(userPassword, user.password);
       // if (user && user.password === userPassword) {
       //   const { _id, name, email } = user;
       //   return { id: _id, name, email };
       // }
-      const { _id, name, email } = user;
-      return { id: _id, name, email };
+      user.password = undefined;
+      return user;
     } catch (error) {
+      throw new HttpException(
+        'Wrong credentials provided',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+  private async verifyPassword(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ) {
+    const isPasswordMatching = await bcrypt.compare(
+      plainTextPassword,
+      hashedPassword,
+    );
+    if (!isPasswordMatching) {
       throw new HttpException(
         'Wrong credentials provided',
         HttpStatus.BAD_REQUEST,
