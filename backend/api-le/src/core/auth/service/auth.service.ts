@@ -1,10 +1,14 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { FindByEmailService } from '../../../modules/user/usecases/find-by-email/find-by-email.service';
 import * as bcrypt from 'bcrypt';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
-  constructor(private usersFindByEmailService: FindByEmailService) {}
+  constructor(
+    private usersFindByEmailService: FindByEmailService,
+    private jwtService: JwtService,
+  ) {}
 
   async validateUser(userEmail: string, userPassword: string) {
     try {
@@ -37,5 +41,12 @@ export class AuthService {
         HttpStatus.BAD_REQUEST,
       );
     }
+  }
+
+  async login(user: any) {
+    const payload = { username: user.username, sub: user.userId };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
   }
 }
