@@ -15,6 +15,8 @@ export class FindAllUsersUseCase {
       page: Number(page),
       limit: Number(limit),
     };
-    return await this.iUserRepository.findAll(options);
+    const users = await this.iUserRepository.findAll(options);
+    await users.forEach(element => (element.password = undefined));
+    return users;
   }
 }
