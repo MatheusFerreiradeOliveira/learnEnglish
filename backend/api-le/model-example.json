@@ -8,7 +8,7 @@
   "todo": {
     "auth": ["auth/login", "auth/refresh"],
     "users": ["POST", "DELETE", "GET", "PUT"],
-    "type_profiles": [],
+    "type_profiles": ["POST", "DELETE", "GET", "PUT"],
     "memory_cards": [],
     "phrases": [],
     "posts": [],

@@ -18,7 +18,7 @@ import { RefreshToken, RefreshTokenSchema } from './schemas/refresh-token';
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '90s' },
+      signOptions: { expiresIn: '60s' },
     }),
     MongooseModule.forFeature([
       { name: RefreshToken.name, schema: RefreshTokenSchema },

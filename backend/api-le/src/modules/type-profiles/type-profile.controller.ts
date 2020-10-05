@@ -3,8 +3,10 @@ import {
   Controller,
   DefaultValuePipe,
   Get,
+  Param,
   ParseIntPipe,
   Post,
+  Put,
   Query,
   Res,
   UseGuards,
@@ -14,12 +16,16 @@ import { JwtAuthGuard } from 'src/core/auth/service/jwt.guard';
 import { CreateTypeProfileDto } from './dto/create-type-profile.dto';
 import { CreateTypeProfileService } from './usecases/create/create-type-profile.service';
 import { FindAllTypeProfileService } from './usecases/find-all/find-all-type-profile.service';
+import { FindByIdTypeProfileService } from './usecases/find-by-id/find-by-id-type-profile.service';
+import { UpdateTypeProfileService } from './usecases/update/update-type-profile.service';
 
 @Controller('typeprofiles')
 export class TypeProfileController {
   constructor(
     private createTypeProfileService: CreateTypeProfileService,
     private findAllTypeProfileService: FindAllTypeProfileService,
+    private findByIdTypeProfileService: FindByIdTypeProfileService,
+    private updateTypeProfileService: UpdateTypeProfileService,
   ) {}
   @Post()
   async create(@Body() dto: CreateTypeProfileDto, @Res() res: Response) {
@@ -34,6 +40,18 @@ export class TypeProfileController {
     @Query('page', new DefaultValuePipe(0), ParseIntPipe) page: number,
     @Res() res: Response,
   ) {
-    return this.findAllTypeProfileService.handle(page, limit, res);
+    return await this.findAllTypeProfileService.handle(page, limit, res);
+  }
+  @Get(':id')
+  async findById(@Param('id') id: string, @Res() res: Response) {
+    return await this.findByIdTypeProfileService.handle(id, res);
+  }
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() dto: CreateTypeProfileDto,
+    @Res() res: Response,
+  ) {
+    return this.updateTypeProfileService.handle(id, dto, res);
   }
 }

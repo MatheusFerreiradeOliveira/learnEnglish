@@ -4,10 +4,10 @@ import { FindAllTypeProfileUseCase } from './find-all-type-profile.usecase';
 
 @Injectable()
 export class FindAllTypeProfileService {
-  constructor(private dindAllTypeProfileUseCase: FindAllTypeProfileUseCase) {}
+  constructor(private findAllTypeProfileUseCase: FindAllTypeProfileUseCase) {}
   async handle(page: number, limit: number, res: Response) {
     try {
-      const data = await this.dindAllTypeProfileUseCase.execute(
+      const data = await this.findAllTypeProfileUseCase.execute(
         page * limit,
         limit,
       );
