@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+
 import { UserModule } from '../../modules/user/user.module';
 import { AuthController } from './auth.controller';
 import { AuthService } from './service/auth.service';
@@ -7,6 +9,8 @@ import { LocalStrategy } from './service/local.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './service/constants';
+import { RefreshTokenService } from './service/refresh-token.service';
+import { RefreshToken, RefreshTokenSchema } from './schemas/refresh-token';
 
 @Module({
   imports: [
@@ -14,10 +18,13 @@ import { jwtConstants } from './service/constants';
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '120s' },
+      signOptions: { expiresIn: jwtConstants.tokenLife },
     }),
+    MongooseModule.forFeature([
+      { name: RefreshToken.name, schema: RefreshTokenSchema },
+    ]),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, RefreshTokenService],
 })
 export class AuthModule {}

@@ -1,13 +1,23 @@
-import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { FindByEmailService } from '../../../modules/user/usecases/find-by-email/find-by-email.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { jwtConstants } from './constants';
+import { RefreshTokenService } from './refresh-token.service';
+import { RefreshTokenDto } from '../dto/refresh-token.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersFindByEmailService: FindByEmailService,
     private jwtService: JwtService,
+    private refreshTokenService: RefreshTokenService,
   ) {}
 
   async validateUser(userEmail: string, userPassword: string) {
@@ -44,9 +54,56 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const payload = { username: user.username, sub: user.userId };
+    const payload = await { email: user.email, sub: user.userId };
+    console.log(payload);
+    const refresh_token = await this.createRefreshToken(payload);
     return {
+      token_type: 'bearer',
       access_token: this.jwtService.sign(payload),
+      refresh_token: refresh_token.token,
     };
+  }
+
+  async refresh(token: any) {
+    const res = await this.refreshTokenService.findByRefresToken(
+      token.refresh_token,
+    );
+    if (!res) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+    const date_now = new Date();
+    const expiration = new Date(res.expiration_date);
+    if (expiration < date_now) {
+      throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
+    }
+    const payload = await { email: res.email };
+    const refresh_token = await this.createRefreshToken(payload);
+    return {
+      token_type: 'bearer',
+      access_token: this.jwtService.sign(payload),
+      refresh_token: refresh_token.token,
+    };
+  }
+
+  private async createRefreshToken(payload: any) {
+    const isToken = await this.refreshTokenService.findByEmail(payload.email);
+
+    const expiration_date = new Date();
+    expiration_date.setSeconds(
+      expiration_date.getSeconds() + jwtConstants.refreshTokenLife,
+    );
+    const valueHash = payload.email + expiration_date.toISOString();
+    const token = await bcrypt.hash(valueHash, 10);
+    const refresh = new RefreshTokenDto(
+      payload.email,
+      expiration_date.toISOString(),
+      token,
+    );
+    if (isToken) {
+      await this.refreshTokenService.update(isToken._id, refresh);
+    } else {
+      await this.refreshTokenService.createRefreshToken(refresh);
+    }
+    return refresh;
   }
 }
