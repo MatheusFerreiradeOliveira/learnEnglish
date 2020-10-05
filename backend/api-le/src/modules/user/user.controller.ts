@@ -1,28 +1,64 @@
 import {
   Body,
   Controller,
+  DefaultValuePipe,
+  Delete,
+  Patch,
   Get,
+  Param,
+  ParseBoolPipe,
+  ParseIntPipe,
   Post,
+  Query,
   Req,
   Res,
   UseGuards,
+  Put,
 } from '@nestjs/common';
-import { CreateService } from './usecases/create/create.service';
+import { CreateUserService } from './usecases/create/create-user.service';
 import { Request, Response } from 'express';
 import { JwtAuthGuard } from '../../core/auth/service/jwt.guard';
+import { DeleteUserService } from './usecases/delete/delete-user.service';
+import { FindAllUsersService } from './usecases/find-all/find-all-users.service';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { UpdateUserService } from './usecases/update/update-user.service';
 
 @Controller('users')
 export class UserController {
-  constructor(private createService: CreateService) {}
+  constructor(
+    private createUserService: CreateUserService,
+    private deleteUserService: DeleteUserService,
+    private findAllUsersService: FindAllUsersService,
+    private updateUserService: UpdateUserService,
+  ) {}
 
   @Post()
   async create(@Req() req: Request, @Res() res: Response) {
-    return this.createService.handle(req.body, res);
+    return this.createUserService.handle(req.body, res);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findAll(@Req() req: Request, @Res() res: Response) {
-    return res.status(200).send({ data: [] });
+  async findAll(
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe)
+    limit: number,
+    @Query('page', new DefaultValuePipe(0), ParseIntPipe) page: number,
+    @Res() res: Response,
+  ) {
+    return this.findAllUsersService.handle(page, limit, res);
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() dto: UpdateUserDto,
+    @Res() res: Response,
+  ) {
+    return this.updateUserService.handle(id, dto, res);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: string, @Res() res: Response) {
+    return this.deleteUserService.handle(id, res);
   }
 }

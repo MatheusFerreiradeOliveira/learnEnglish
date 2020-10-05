@@ -5,7 +5,7 @@ import * as bcrypt from 'bcrypt';
 import { CreateUserDTO } from '../../dto/create-user.dto';
 
 @Injectable()
-export class CreateUseCase {
+export class CreateUserUseCase {
   constructor(
     @Inject('IUserRepository')
     private iUserRepository: IUserRepository,

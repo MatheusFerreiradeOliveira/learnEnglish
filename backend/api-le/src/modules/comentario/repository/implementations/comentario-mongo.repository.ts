@@ -27,14 +27,12 @@ export class ComentarioMongoRepository implements IComentarioRepository {
       { _id: id },
       {
         descricao: dto.descricao,
-        likes: dto.likes      
+        likes: dto.likes,
       },
     );
   }
 
   delete(id: string) {
-    return this.comentarioModel.deleteOne(
-      { _id: id },
-    );
+    return this.comentarioModel.deleteOne({ _id: id });
   }
 }

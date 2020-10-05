@@ -1,11 +1,5 @@
-import {
-  HttpException,
-  HttpStatus,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { FindByEmailService } from '../../../modules/user/usecases/find-by-email/find-by-email.service';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { FindUserByEmailService } from '../../../modules/user/usecases/find-by-email/find-user-by-email.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
@@ -15,14 +9,14 @@ import { RefreshTokenDto } from '../dto/refresh-token.dto';
 @Injectable()
 export class AuthService {
   constructor(
-    private usersFindByEmailService: FindByEmailService,
+    private findUserByEmailService: FindUserByEmailService,
     private jwtService: JwtService,
     private refreshTokenService: RefreshTokenService,
   ) {}
 
   async validateUser(userEmail: string, userPassword: string) {
     try {
-      const user = await this.usersFindByEmailService.handle(userEmail);
+      const user = await this.findUserByEmailService.handle(userEmail);
       await this.verifyPassword(userPassword, user.password);
       // if (user && user.password === userPassword) {
       //   const { _id, name, email } = user;

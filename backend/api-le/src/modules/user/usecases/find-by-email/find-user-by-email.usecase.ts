@@ -3,7 +3,7 @@ import { IUserRepository } from '../../repository/i-user.repository';
 import { User } from '../../schemas/user.schema';
 
 @Injectable()
-export class FindByEmailUseCase {
+export class FindUserByEmailUseCase {
   constructor(
     @Inject('IUserRepository')
     private iUserRepository: IUserRepository,

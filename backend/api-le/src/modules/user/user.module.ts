@@ -1,12 +1,18 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './schemas/user.schema';
-import { FindByEmailUseCase } from './usecases/find-by-email/find-by-email.usecase';
-import { FindByEmailService } from './usecases/find-by-email/find-by-email.service';
+import { FindUserByEmailUseCase } from './usecases/find-by-email/find-user-by-email.usecase';
+import { FindUserByEmailService } from './usecases/find-by-email/find-user-by-email.service';
 import { UserMongoRepository } from './repository/implementations/user-mongo.repository';
 import { UserController } from './user.controller';
-import { CreateService } from './usecases/create/create.service';
-import { CreateUseCase } from './usecases/create/create.usecase';
+import { CreateUserService } from './usecases/create/create-user.service';
+import { CreateUserUseCase } from './usecases/create/create-user.usecase';
+import { DeleteUserService } from './usecases/delete/delete-user.service';
+import { DeleteUserUseCase } from './usecases/delete/delete-user.usecase';
+import { FindAllUsersService } from './usecases/find-all/find-all-users.service';
+import { FindAllUsersUseCase } from './usecases/find-all/find-all-users.usecase';
+import { UpdateUserService } from './usecases/update/update-user.service';
+import { UpdateUserUserCase } from './usecases/update/update-user.usercase';
 
 @Module({
   imports: [
@@ -14,12 +20,18 @@ import { CreateUseCase } from './usecases/create/create.usecase';
   ],
   controllers: [UserController],
   providers: [
-    CreateService,
-    CreateUseCase,
-    FindByEmailUseCase,
-    FindByEmailService,
+    CreateUserService,
+    CreateUserUseCase,
+    FindUserByEmailUseCase,
+    FindUserByEmailService,
+    DeleteUserService,
+    DeleteUserUseCase,
+    FindAllUsersService,
+    FindAllUsersUseCase,
+    UpdateUserService,
+    UpdateUserUserCase,
     { provide: 'IUserRepository', useClass: UserMongoRepository },
   ],
-  exports: [FindByEmailService],
+  exports: [FindUserByEmailService],
 })
 export class UserModule {}

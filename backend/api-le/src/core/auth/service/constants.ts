@@ -4,5 +4,5 @@ export const jwtConstants = {
   refreshTokenSecret: 'some-secret-refresh-token-shit',
   port: 3000,
   tokenLife: 90,
-  refreshTokenLife: 3600,
+  refreshTokenLife: 150,
 };
