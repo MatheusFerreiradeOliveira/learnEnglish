@@ -10,7 +10,6 @@ export class UpdateUserUserCase {
     private iUserRepository: IUserRepository,
   ) {}
   async execute(id: string, dto: UpdateUserDto) {
-    console.log(dto);
     if (dto.password) dto.password = await bcrypt.hash(dto.password, 10);
     return await this.iUserRepository.update(dto, id);
   }

@@ -49,7 +49,7 @@ export class AuthService {
 
   async login(user: any) {
     const payload = await { email: user.email, sub: user.userId };
-    console.log(payload);
+
     const refresh_token = await this.createRefreshToken(payload);
     return {
       token_type: 'bearer',
