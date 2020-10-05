@@ -32,7 +32,7 @@ export class TypeProfileController {
     return this.createTypeProfileService.handle(dto, res);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe)
@@ -42,10 +42,14 @@ export class TypeProfileController {
   ) {
     return await this.findAllTypeProfileService.handle(page, limit, res);
   }
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findById(@Param('id') id: string, @Res() res: Response) {
     return await this.findByIdTypeProfileService.handle(id, res);
   }
+
+  @UseGuards(JwtAuthGuard)
   @Put(':id')
   async update(
     @Param('id') id: string,
