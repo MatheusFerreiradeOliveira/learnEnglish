@@ -74,6 +74,7 @@ export class AuthService {
     const date_now = new Date();
     const expiration = new Date(res.expiration_date);
     if (expiration < date_now) {
+      await this.refreshTokenService.delete(res._id);
       throw new HttpException('Unauthorized', HttpStatus.UNAUTHORIZED);
     }
     const payload = await { email: res.email };

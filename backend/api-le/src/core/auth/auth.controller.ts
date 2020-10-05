@@ -11,6 +11,7 @@ export class AuthController {
   async login(@Request() req: any) {
     return this.authService.login(req.user);
   }
+
   @Post('refresh')
   async refresh(@Request() req: any) {
     return this.authService.refresh(req.body);
