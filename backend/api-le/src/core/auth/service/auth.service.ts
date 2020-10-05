@@ -52,7 +52,7 @@ export class AuthService {
 
     const refresh_token = await this.createRefreshToken(payload);
     return {
-      token_type: 'bearer',
+      token_type: 'Bearer',
       access_token: this.jwtService.sign(payload),
       refresh_token: refresh_token.token,
     };
@@ -87,7 +87,7 @@ export class AuthService {
     expiration_date.setSeconds(
       expiration_date.getSeconds() + jwtConstants.refreshTokenLife,
     );
-    const valueHash = payload.email + expiration_date.toISOString();
+    const valueHash = payload.email + expiration_date.toString();
     const token = await bcrypt.hash(valueHash, 10);
     const refresh = new RefreshTokenDto(
       payload.email,
