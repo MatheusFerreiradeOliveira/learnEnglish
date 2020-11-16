@@ -25,8 +25,9 @@
 }
 
 h1 {
+    padding: 40px;
     color: white;
-    
+    font-size: 50px;
 }
 
 .form-group {
@@ -34,11 +35,18 @@ h1 {
     flex-direction: column;
     padding: 15px;
     color: white;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .form-group #labelForm {
     display: flex;
     margin-bottom: 10px;
     align-items: flex-start;
+}
+
+#button {
+    margin: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
 }

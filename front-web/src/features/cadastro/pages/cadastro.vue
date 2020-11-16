@@ -22,7 +22,8 @@
                         <label id="labelForm" >Confirmar senha</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita sua senha">
                     </div>
-                    <button type="submit" class="btn btn-secondary">Criar conta</button>
+                    
+                    <button id="button" type="submit" class="btn btn-secondary">Criar conta</button>
                     
                 </form>
             </div>
