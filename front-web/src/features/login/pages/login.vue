@@ -14,7 +14,7 @@
                         <label id="labelForm" >Senha</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
                     </div>
-                    <button type="submit" class="btn btn-secondary">Entrar</button>
+                    <button id="button" type="submit" class="btn btn-secondary">Entrar</button>
                 </form>
             </div>
         </div>
