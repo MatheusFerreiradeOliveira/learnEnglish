@@ -2,12 +2,20 @@
 <div id="navbar-main">
     <div id="navbar">
         <div class="logo">
-            <img src="@/assets/svg/logo_le.svg" alt="ok">
-            <span id="nav-title">Learning English</span>
+            <router-link class="router-login" :to="{name:'Home'}">
+                <img src="@/assets/svg/logo_le.svg" alt="ok">
+                <span id="nav-title">Learning English</span>
+            </router-link>
+
         </div>
         <div class="items">
-            <div class="btn-menu login">Entre</div>
-            <div class="btn-menu singin">Cadastre-se</div>
+            <router-link class="router-login" :to="{name:'Login'}">
+                <div class="btn-menu btn-login"> Entre</div>
+            </router-link>
+           <div class="sizedbox"></div>
+            <router-link class="router-login" :to="{name:'Signup'}">
+                <div class="btn-menu singin">Cadastre-se</div>
+            </router-link>
         </div>
     </div>
 </div>
@@ -61,6 +69,9 @@ img {
     width: 40px;
     padding-right: 10px;
 }
+.sizedbox{
+    width: 20px;
+}
 
 .logo {
     font-family: 'Nova Mono', monospace;
@@ -88,7 +99,6 @@ img {
     height: 32px;
     display: flex;
     width: 130px;
-    margin-left: 15px;
     justify-content: center;
     padding-bottom: 3px;
     border: 0.5px solid grey;
@@ -100,7 +110,7 @@ img {
     transition: .4s;
 }
 
-.login {
+.btn-login {
     /*background-color: #7b68ee;*/
     background-color: white;
     transition: .4s;
@@ -114,7 +124,7 @@ img {
     color: white;
 }
 
-.login:hover {
+.btn-login:hover {
     /* box-shadow: inset 1px 1px 0 1px #5c4dbc;
     background-color: #5c4dbc;
     border: 0.5px solid #5c4dbc;
@@ -124,4 +134,15 @@ img {
     border: 0.5px solid #00b08c;
     color: white;
 }
+.router-login{
+  text-decoration: none;
+  color: rgb(55, 55, 55);
+}
+.router-login:link{
+  text-decoration: none;
+  color: rgb(55, 55, 55);
+}
+.router-login:visited {color: rgb(55, 55, 55);}  /* Mouse over link */
+.router-login:active {color: rgb(55, 55, 55);}
+
 </style>

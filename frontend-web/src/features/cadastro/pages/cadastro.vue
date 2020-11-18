@@ -1,8 +1,9 @@
 <template>
     <div class="login">
+        <nav-bar></nav-bar>
         <div class="content-login">
-            <header>
-                <h1 class="title-login">Learn English</h1>
+            <header class="login">
+                <h1 class="title-login">Faça seu Cadastro!</h1>
             </header>
             <div>
                 <form>
@@ -22,9 +23,7 @@
                         <label id="labelForm" >Confirmar senha</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Repita sua senha">
                     </div>
-
-                    <button id="button" type="submit" class="btn btn-secondary">Criar conta</button>
-
+                    <button id="button" type="submit" class="btn btn-secondary">Entrar</button>
                 </form>
             </div>
         </div>
@@ -32,8 +31,13 @@
 </template>
 
 <script>
-export default {
+import NavBar from '@/features/navbar/pages/NavBar'
 
+export default {
+  name: 'Cadastro',
+  components: {
+    NavBar
+  }
 }
 </script>
 

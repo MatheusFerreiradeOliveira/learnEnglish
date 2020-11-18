@@ -1,8 +1,10 @@
 <template>
     <div class="login">
+        <nav-bar></nav-bar>
         <div class="content-login">
-            <header>
-                <h1 class="title-login">Learn English</h1>
+            <header class="login">
+                <h1 class="title-login">Bem-vindo de volta!</h1>
+                <h3 class="title-login">Learn English</h3>
             </header>
             <div>
                 <form>
@@ -22,8 +24,13 @@
 </template>
 
 <script>
-export default {
+import NavBar from '@/features/navbar/pages/NavBar'
 
+export default {
+  name: 'Login',
+  components: {
+    NavBar
+  }
 }
 </script>
 
