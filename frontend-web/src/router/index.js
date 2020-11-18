@@ -5,6 +5,7 @@ import Login from '@/features/login/pages/login'
 import Cadastro from '@/features/cadastro/pages/cadastro'
 import Home from '@/features/home/pages/Home'
 import Forum from '@/features/forum/pages/Forum'
+import ForumMessages from '@/features/forum/pages/ForumMessages'
 Vue.use(Router)
 
 export default new Router({
@@ -29,6 +30,12 @@ export default new Router({
       path: '/forum',
       name: 'Forum',
       component: Forum
+
+    },
+    {
+      path: '/forum/:name',
+      name: 'ForumMessages',
+      component: ForumMessages
     },
     {
       path: '*',

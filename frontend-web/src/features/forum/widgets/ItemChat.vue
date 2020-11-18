@@ -1,4 +1,5 @@
 <template>
+<router-link  class="router" :to='{name: "ForumMessages", params:{name : "ok"}}'>
   <div id="item-chat">
     <div class="icon-user-forum">
     {{data.photo}}
@@ -29,6 +30,7 @@
         </div>
     </div>
   </div>
+</router-link>
 </template>
 
 <script>
@@ -123,10 +125,9 @@ i.far{
     margin-top: 15px;
     margin-bottom: 10px;
     padding: 0;
-    width: 20%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 .details-content div{
@@ -136,9 +137,14 @@ i.far{
     justify-content: space-between;
     align-items: center;
     margin: 0px;
+    margin-right: 10px;
 }
 .sizedbox{
-    width: 10px;
+    width: 5px;
 }
-
+.router,.router:link, .router:visited, .router:active, .router:hover {
+  text-decoration: none;
+  list-style: none;
+  color: rgb(55, 55, 55);
+}
 </style>

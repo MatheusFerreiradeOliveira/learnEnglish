@@ -18,11 +18,17 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  /*
   color: #2c3e50;
-}
-.router-login:link, .router-login:visited, .router-login:active{
-  text-decoration: none;
+  */
   color: rgb(55, 55, 55);
+
+}
+router-link, router-link:link, router-link:visited, router-link:active{
+  text-decoration: none;
+}
+.router-link, .router-link:link, .router-link:visited, .router-link:active{
+  text-decoration: none;
 }
 ul li{
   text-decoration: none;
