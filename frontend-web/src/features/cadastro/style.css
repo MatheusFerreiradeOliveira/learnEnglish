@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@700&display=swap');
+
+.login {
+    background-image: url("./../../assets/svg/cadastro_login.svg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-attachment: fixed;
+    background-clip: border-box;
+    padding: 40px;
+    height: 89vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Big Shoulders Stencil Text';
+}
+
+.content-login {
+    width: 400px;
+    height: 600px;
+    background-color: #6495ED;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+h1 {
+    padding: 40px;
+    color: white;
+    font-size: 50px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    color: white;
+    font-size: 25px;
+}
+
+.form-group #labelForm {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+#button {
+    margin: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
