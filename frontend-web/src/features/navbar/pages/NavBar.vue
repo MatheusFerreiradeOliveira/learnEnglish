@@ -46,10 +46,9 @@ function scrollFunction () {
     position: fixed;
     top: 0px;
     width: 100%;
-    height: 50px;
+    height: 60px;
     display: flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
     /* background-color: rgb(250, 250, 255);
     box-shadow: 0px 3px 5px rgb(120, 120, 120);*/
@@ -66,18 +65,21 @@ function scrollFunction () {
 }
 
 img {
-    width: 40px;
-    padding-right: 10px;
+    width: 50px;
+    height:50px;
+    padding: 0px;
 }
 .sizedbox{
     width: 20px;
 }
-
+.nav-title{
+    color: rgb(80, 80, 80);
+}
 .logo {
     font-family: 'Nova Mono', monospace;
-    font-size: 20px;
-    font-weight: 200;
-    color: rgb(60, 60, 50);
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
