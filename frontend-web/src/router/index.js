@@ -16,11 +16,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '*',
-      name: 'Error-404',
-      component: Error404
-    },
-    {
       path: '/login',
       name: 'Login',
       component: Login
@@ -34,6 +29,11 @@ export default new Router({
       path: '/forum',
       name: 'Forum',
       component: Forum
+    },
+    {
+      path: '*',
+      name: 'Error-404',
+      component: Error404
     }
   ]
 

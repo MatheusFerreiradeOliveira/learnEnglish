@@ -20,5 +20,12 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-
+.router-login:link, .router-login:visited, .router-login:active{
+  text-decoration: none;
+  color: rgb(55, 55, 55);
+}
+ul li{
+  text-decoration: none;
+    list-style: none;
+}
 </style>

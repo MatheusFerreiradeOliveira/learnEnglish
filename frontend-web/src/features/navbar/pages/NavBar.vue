@@ -94,15 +94,11 @@ img {
 
 .btn-menu {
     /* font-size: 15px;*/
+    display: flex;
+    flex-direction: row;
+    padding: 10px 25px 10px 25px;
     font-weight: 400;
     box-shadow: inset 1px 1px 0 1px #fff;
-    font-family: 'Poppins', sans-serif;
-    padding-top: 5px;
-    height: 32px;
-    display: flex;
-    width: 130px;
-    justify-content: center;
-    padding-bottom: 3px;
     border: 0.5px solid grey;
     border-radius: 50px;
 }

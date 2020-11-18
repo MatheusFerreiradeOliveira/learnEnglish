@@ -16,7 +16,7 @@
                         <label id="labelForm" >Senha</label>
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
                     </div>
-                    <button id="button" type="submit" class="btn btn-secondary">Entrar</button>
+                    <button id="button" type="submit" class="btn btn-secondary" @click.stop.prevent='toForum'>Entrar</button>
                 </form>
             </div>
         </div>
@@ -30,6 +30,11 @@ export default {
   name: 'Login',
   components: {
     NavBar
+  },
+  methods: {
+    toForum: function () {
+      this.$router.push('/forum')
+    }
   }
 }
 </script>

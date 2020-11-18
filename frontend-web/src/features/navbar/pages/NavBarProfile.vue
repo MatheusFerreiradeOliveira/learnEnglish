@@ -7,8 +7,11 @@
         </div>
         <div class="items">
             <ul>
-                <li v-for='(item, index) in itens_menu' :key="index" :class="item.css"> {{item.name}} </li>
-
+                <router-link v-for='(item, index) in itens_menu' :key="index" class="router-login" :to="{name:item.link}">
+                    <li  :class="item.css">
+                        {{item.name}}
+                    </li>
+                </router-link>
             </ul>
         </div>
     </div>
@@ -18,14 +21,15 @@
 <script>
 export default {
   name: 'NavBarProfile',
+  props: [],
   data () {
     return {
       'itens_menu': [
-        {name: 'Aprender', link: '#', css: 'blue'},
-        {name: 'Cards', link: '#', css: 'yellow'},
-        {name: 'Fórum', link: '#', css: 'green'},
-        {name: 'Dicionário', link: '#', css: 'pink'},
-        {name: 'Perfil', link: '#', css: 'white'}
+        {name: 'Aprender', link: '*', css: 'blue'},
+        {name: 'Cards', link: '*', css: 'yellow'},
+        {name: 'Fórum', link: 'Forum', css: 'green'},
+        {name: 'Dicionário', link: '*', css: 'pink'},
+        {name: 'Perfil', link: '*', css: 'white'}
       ]
     }
   }
@@ -69,13 +73,13 @@ div.items ul{
     flex-direction: row;
     text-decoration: none;
     list-style: none;
+     padding: 0;
+    margin: 0;
 }
 div.items ul li{
     display: flex;
     flex-direction: row;
-    text-decoration: none;
-    list-style: none;
-    padding: 8px 25px 8px 25px;
+    padding: 10px 25px 10px 25px;
     margin-left: 2px;
     margin-right: 2px;
     font-weight: 600;

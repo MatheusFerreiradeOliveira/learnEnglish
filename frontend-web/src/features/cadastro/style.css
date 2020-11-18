@@ -58,6 +58,9 @@ header.login{
     background-color: #7b68ee;
     color: white;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 #button:hover {
     background-color: #5F48EA;
