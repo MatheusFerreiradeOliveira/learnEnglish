@@ -58,7 +58,8 @@ textarea#send-message{
     border-bottom: 1px solid rgb(100, 100, 100);
 }
 .btn-send {
-    background-color: #7b68ee;
+    /*background-color: #7b68ee;*/
+    background-color: #fff;
     transition: .4s;
 }
 .btn-send:hover {

@@ -5,7 +5,7 @@
     </div>
     <div class="content-forum">
         <div class="title-content">
-            <div class="text">
+            <div class="text-content">
             {{data.body}}
             </div>
         </div>
@@ -99,8 +99,9 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: 14px;
 }
-div.title-content div.text{
+div.title-content div.text-content{
     font-size: 14px;
     overflow: hidden;
     text-align: left;

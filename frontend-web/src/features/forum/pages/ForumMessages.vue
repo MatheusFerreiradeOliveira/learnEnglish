@@ -2,18 +2,18 @@
   <div id="messages-page">
     <nav-bar-profile></nav-bar-profile>
     <div id='messages-container'>
-        <header class="column">
+        <div class="header-messages-main">
             <div class="row header-messages">
-                <div class="icon-user-message">
+                <div class="icon-photo-message">
                     {{data.user.photo}}
                 </div>
-                <div class="column header">
+                <div class="column header-title-and-btn">
                     <div class="row header-title">
                         <div class="h-title">
                         {{data.title}}
                         </div>
                         <div class="seguir">
-                            <div class="btn-menu btn-new-topic">Acompanhar</div>
+                            <div class="btn-menu btn-acompanhar">Acompanhar</div>
                         </div>
                     </div>
                     <div class="row h-name"> {{data.user.name}}</div>
@@ -22,7 +22,7 @@
             <div class="row tags">
                 <tags :data="data.tags"></tags>
             </div>
-        </header>
+        </div>
         <div class="description-message">
         {{data.body}}
         </div>
@@ -120,21 +120,24 @@ export default {
     border: 0.5px solid grey;
     border-radius: 50px;
 }
-.btn-new-topic {
+.btn-acompanhar {
     background-color: #66f2d5;
     transition: .4s;
 }
 
-.btn-new-topic:hover {
+.btn-acompanhar:hover {
     box-shadow: inset 1px 1px 0 1px  #00b08c;
     background-color: #00b08c;
     border: 0.5px solid #00b08c;
     color: white;
 }
-.icon-user-message{
-    width: 85px;
+.icon-photo-message{
+    min-width: 80px;
+    max-width: 85px;
+    min-height: 80px;
+    max-width: 85px;
     padding: 0;
-    height: 75px;
+    margin: 0;
     margin-right: 20px;
     display: flex;
     flex-direction: column;
@@ -143,13 +146,14 @@ export default {
     background-color:  #FEF0F0;
     border-radius: 1000px;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
-
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(100, 100, 100);
 }
 #messages-page{
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
-    background: #fff;
     height: 754px;
     width: 100%;
     align-items: center;
@@ -173,10 +177,15 @@ export default {
     font-weight: 400;
     color: rgb(100, 100, 100);
 }
-header{
+div.header-messages-main{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
     padding-bottom: 10px;
 }
-div.header{
+div.header-title-and-btn{
     width: 100%;
 }
 #messages-container{
@@ -204,8 +213,11 @@ div.header{
     justify-content: space-between;
 }
 .tags{
-    padding: 5px 0px 5px 0 ;
+    padding: 5px 0px 5px 0px ;
     margin: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
 }
 i.far{
     font-size: 18px;

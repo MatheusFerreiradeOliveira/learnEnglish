@@ -94,7 +94,7 @@ export default {
     width: 980px;
     margin-top: 10px;
 }
-.header-main{
+header.header-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
