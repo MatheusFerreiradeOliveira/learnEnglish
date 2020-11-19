@@ -31,6 +31,7 @@
     "id": "memorycard01",
     "id_user": "ObjectId(user01)",
     "word": "pendant",
+    "description":"texto em md",
     "level": 1,
     "date_view": "2020-11-12T10:10:10.2131231/* salvar como timestamp */",
     "step": 2,
