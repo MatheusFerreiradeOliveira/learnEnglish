@@ -39,30 +39,9 @@
                 <div>{{data.date}}</div>
             </div>
         </div>
-            <div class="send-message">
-                <textarea name="send-message" id="send-message" cols="30" rows="10"></textarea>
-                <div class="row buttons-message">
-                    <div class="btn-menu btn-send">Publicar</div>
-                    <div class="sizedbox"></div>
-                    <div class="btn-menu btn-cancel">Cancelar</div>
-                </div>
-            </div>
-            <div class="comments-main">
-                <div class="comments-title row">
-                <div class="comment-title">{{data.comments}} Comentário(s)</div>
-                <div class="comment-filtro">
-                    <select name="filtro" id="filtro">
-                        <option value="">data</option>
-                        <option value="">facebook</option>
-                        <option value="">twiter</option>
-                    </select>
-                </div>
-                </div>
-            </div>
-            <div class="coments">
-            <item-comment v-for="(i,index) in data.list_coments" :key="index" :data="i"></item-comment>
-            </div>
-        </div>
+        <field-send-message></field-send-message>
+        <area-comments :data='data'></area-comments>
+    </div>
 
   </div>
 </template>
@@ -70,12 +49,14 @@
 <script>
 import NavBarProfile from '@/features/navbar/pages/NavBarProfile'
 import Tags from '@/features/forum/widgets/Tags'
-import ItemComment from '@/features/forum/widgets/ItemComment'
+import AreaComments from '@/features/forum/widgets/AreaComments'
+import FieldSendMessage from '@/features/forum/widgets/FieldSendMessage'
 export default {
   name: 'ForumMessages',
   components: {
     Tags,
-    ItemComment,
+    AreaComments,
+    FieldSendMessage,
     NavBarProfile
   },
   data () {
@@ -258,75 +239,5 @@ div.description-message{
     flex-direction: row;
     justify-content: start;
     align-items: flex-start;
-}
-.send-message{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-textarea#send-message{
-    width: 100%;
-    min-height: 120px;
-    padding: 10px;
-    max-width: 100%;
-    min-width: 100%;
-    border: 1px solid rgb(100, 100, 100);
-}
-.buttons-message{
-    padding: 0;
-    margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(100, 100, 100);
-}
-.btn-send {
-    background-color: #7b68ee;
-    transition: .4s;
-}
-.btn-send:hover {
-    box-shadow: inset 1px 1px 0 1px #5F48EA;
-    background-color: #5F48EA;
-    border: 0.5px solid #5F48EA;
-    color: white;
-}
-.btn-cancel {
-    background-color: #ffe54c;
-    transition: .4s;
-}
-.btn-cancel:hover {
-    box-shadow: inset 1px 1px 0 1px #f70;
-    background-color: #f70;
-    border: 0.5px solid #f70;
-    color: white;
-}
-.sizedbox{
-    width: 10px;
-}
-.comments-title{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 700;
-    justify-content: start;
-    align-items: center;
-}
-.comment-title{
-    width: 100%;
-    display: flex;
-    justify-content: start;
-}
-.comment-filtro{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 400;
-}
-.comments-main{
-    padding-bottom: 20px;
 }
 </style>
