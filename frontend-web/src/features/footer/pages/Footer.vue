@@ -42,7 +42,7 @@
     </div>
     </div>
       <div class="copyright">
-<div class="row d-flex align-items-center">
+      <div class="row d-flex align-items-center">
       <div class="col-md-6 col-lg-8">
         <p class="text-left text-md-left">COPYRIGHT &copy; BY LEARNING ENGLISH CORPORATION.
         </p>
@@ -72,7 +72,6 @@
         </div>
 
       </div>
-      <!-- Grid column -->
 
     </div>
   </div>
@@ -152,6 +151,11 @@ span#footer-content{
   text-align: center;
   background: transparent;
   box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+
+}
+.fa {
+  font-family: 'FontAwesome' !Important;
+  font-weight: 200 !Important;
 }
 .list-inline-item:hover{
   color: #7b68ee;
