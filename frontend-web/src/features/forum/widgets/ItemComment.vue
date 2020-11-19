@@ -1,5 +1,4 @@
 <template>
-<router-link  class="router" :to='{name: "ForumMessages", params:{name : "uid_user"}}'>
   <div id="item-chat">
     <div class="icon-user-forum">
     {{data.photo}}
@@ -7,12 +6,7 @@
     <div class="content-forum">
         <div class="title-content">
             <div class="text">
-            {{data.title}}
-            </div>
-            <div class="comments-forum">
-                <i class='far fa-comment-alt'></i>
-                <div class="sizedbox"></div>
-                <div>{{data.comments}}</div>
+            {{data.body}}
             </div>
         </div>
         <div class="details-content">
@@ -30,12 +24,11 @@
         </div>
     </div>
   </div>
-</router-link>
 </template>
 
 <script>
 export default {
-  name: 'ItemChat',
+  name: 'ItemComment',
   props: {
     data: {
       'type': Object,
@@ -44,7 +37,7 @@ export default {
         'photo': 'JF',
         'name': 'Jeferson Gonçalves',
         'email': 'freitas@gmail.com',
-        'title': 'Como é essa concordância..',
+        'body': 'Como é essa concordância..',
         'likes': 10,
         'date': '2020-10-11',
         'comments': 4
@@ -108,7 +101,7 @@ export default {
     align-items: center;
 }
 div.title-content div.text{
-    font-size: 20px;
+    font-size: 14px;
     overflow: hidden;
     text-align: left;
 }
