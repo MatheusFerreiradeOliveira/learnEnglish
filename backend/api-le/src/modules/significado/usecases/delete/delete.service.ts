@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { Significado } from '../../schemas/significado.schema';
+import { Meaning } from '../../schemas/meaning.schema';
 import { DeleteUseCase } from './delete.usecase';
 
 @Injectable()

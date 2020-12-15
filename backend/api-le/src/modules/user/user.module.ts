@@ -13,10 +13,12 @@ import { FindAllUsersService } from './usecases/find-all/find-all-users.service'
 import { FindAllUsersUseCase } from './usecases/find-all/find-all-users.usecase';
 import { UpdateUserService } from './usecases/update/update-user.service';
 import { UpdateUserUserCase } from './usecases/update/update-user.usercase';
+import { TypeProfileModule } from '../type-profiles/type-profile.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    TypeProfileModule
   ],
   controllers: [UserController],
   providers: [

@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IFraseRepository } from '../../repository/i-frase.repository';
-import { Frase } from '../../schemas/frase.schema';
+import { IPhraseRepository } from '../../repository/i-phrase.repository';
+import { Phrase } from '../../schemas/phrase.schema';
 @Injectable()
 export class FindAllUseCase {
   constructor(
-    @Inject('IFraseRepository')
-    private iFraseRepository: IFraseRepository,
+    @Inject('IPhraseRepository')
+    private iPhraseRepository: IPhraseRepository,
   ) {}
-  async execute(): Promise<Frase> {
-    return await this.iFraseRepository.getAll();
+  async execute(): Promise<Phrase> {
+    return await this.iPhraseRepository.getAll();
   }
 }

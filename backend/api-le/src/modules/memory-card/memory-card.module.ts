@@ -14,12 +14,16 @@ import { FindByIdUseCase } from './usecases/find-by-id/find-by-id.usecase';
 import { MemoryCardMongoRepository } from './repository/implementations/memory-card-mongo.repository';
 import { UpdateService } from './usecases/update/update.service';
 import { UpdateUseCase } from './usecases/update/update.usecase';
+import { MeaningModule } from '../significado/meaning.module';
+import { PhraseModule } from '../frase/phrase.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       {name: MemoryCard.name, schema: MemoryCardSchema}
-    ])
+    ]),
+    MeaningModule,
+    PhraseModule
   ],
   providers: [
     MemoryCardService,
