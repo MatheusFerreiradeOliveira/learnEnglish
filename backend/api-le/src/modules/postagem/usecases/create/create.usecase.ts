@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IPostagemRepository } from '../../repository/i-postagem.repository';
-import { Postagem } from '../../schemas/postagem.schema';
+import { IPostRepository } from '../../repository/i-post.repository';
+import { Postt } from '../../schemas/post.schema';
 @Injectable()
 export class CreateUseCase {
   constructor(
-    @Inject('IPostagemRepository')
-    private iPostagemRepository: IPostagemRepository,
+    @Inject('IPostRepository')
+    private iPostRepository: IPostRepository,
   ) {}
-  async execute(dto: Postagem): Promise<Postagem> {
-    return await this.iPostagemRepository.create(dto);
+  async execute(dto: Postt): Promise<Postt> {
+    return await this.iPostRepository.create(dto);
   }
 }

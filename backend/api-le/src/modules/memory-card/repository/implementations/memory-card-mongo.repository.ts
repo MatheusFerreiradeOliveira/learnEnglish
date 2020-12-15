@@ -28,9 +28,9 @@ export class MemoryCardMongoRepository implements IMemoryCardRepository {
         return this.memoryCardModel.updateOne(
             {_id: id},
             {
-                palavra: dto.palavra,
-                significado: dto.significado,
-                frases: dto.frases
+                word: dto.word,
+                meanings: dto.meanings,
+                phrases: dto.phrases
             }
         )
     }

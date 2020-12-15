@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ComentarioModule } from './modules/comentario/comentario.module';
-import { PostagemModule } from './modules/postagem/postagem.module';
+import { CommentaryModule } from './modules/comentary/commentary.module';
+import { PostModule } from './modules/postagem/post.module';
 import { MemoryCardModule } from './modules/memory-card/memory-card.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './modules/user/user.module';
-import { SignificadoModule } from './modules/significado/significado.module';
-import { FraseModule } from './modules/frase/frase.module';
+import { MeaningModule } from './modules/significado/meaning.module';
+import { PhraseModule } from './modules/frase/phrase.module';
 import { AuthModule } from './core/auth/auth.module';
 import { TypeProfileModule } from './modules/type-profiles/type-profile.module';
 
@@ -16,12 +16,12 @@ import { TypeProfileModule } from './modules/type-profiles/type-profile.module';
     MongooseModule.forRoot(
       'mongodb+srv://LearningEnglishApiDBUser:l34rn1ng3ngl1sh@learningenglishapi.7mzw1.mongodb.net/LearningEnglishApiDB?retryWrites=true&w=majority',
     ),
-    ComentarioModule,
-    PostagemModule,
+    CommentaryModule,
+    PostModule,
     MemoryCardModule,
     UserModule,
-    SignificadoModule,
-    FraseModule,
+    MeaningModule,
+    PhraseModule,
     AuthModule,
     TypeProfileModule,
   ],

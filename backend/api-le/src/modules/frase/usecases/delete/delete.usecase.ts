@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IFraseRepository } from '../../repository/i-frase.repository';
-import { Frase } from '../../schemas/frase.schema';
+import { IPhraseRepository } from '../../repository/i-phrase.repository';
+import { Phrase } from '../../schemas/phrase.schema';
 @Injectable()
 export class DeleteUseCase {
   constructor(
-    @Inject('IFraseRepository')
-    private iFraseRepository: IFraseRepository,
+    @Inject('IPhraseRepository')
+    private iPhraseRepository: IPhraseRepository,
   ) {}
-  async execute(id: string): Promise<Frase> {
-    return await this.iFraseRepository.delete(id);
+  async execute(id: string): Promise<Phrase> {
+    return await this.iPhraseRepository.delete(id);
   }
 }

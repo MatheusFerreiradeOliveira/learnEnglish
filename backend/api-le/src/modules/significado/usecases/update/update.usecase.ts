@@ -1,13 +1,13 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ISignificadoRepository } from '../../repository/i-significado.repository';
-import { Significado } from '../../schemas/significado.schema';
+import { IMeaningRepository } from '../../repository/i-meaning.repository';
+import { Meaning } from '../../schemas/meaning.schema';
 @Injectable()
 export class UpdateUseCase {
   constructor(
-    @Inject('ISignificadoRepository')
-    private iSignificadoRepository: ISignificadoRepository,
+    @Inject('IMeaningRepository')
+    private iMeaningRepository: IMeaningRepository,
   ) {}
-  async execute(id: string, dto: Significado): Promise<Significado> {
-    return await this.iSignificadoRepository.update(id, dto);
+  async execute(id: string, dto: Meaning): Promise<Meaning> {
+    return await this.iMeaningRepository.update(id, dto);
   }
 }

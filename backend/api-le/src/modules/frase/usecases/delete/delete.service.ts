@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DeleteUseCase } from './delete.usecase';
 import { Request, Response } from 'express';
-import { Frase } from '../../schemas/frase.schema';
+import { Phrase } from '../../schemas/phrase.schema';
 
 @Injectable()
 export class DeleteService {
