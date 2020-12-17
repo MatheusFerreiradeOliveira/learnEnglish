@@ -37,7 +37,7 @@ export class UserController {
     return this.createUserService.handle(req.body, res);
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Get()
   async findAll(
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe)
@@ -48,7 +48,7 @@ export class UserController {
     return this.findAllUsersService.handle(page, limit, res);
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -58,7 +58,7 @@ export class UserController {
     return this.updateUserService.handle(id, dto, res);
   }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Delete(':id')
   async delete(@Param('id') id: string, @Res() res: Response) {
     return this.deleteUserService.handle(id, res);

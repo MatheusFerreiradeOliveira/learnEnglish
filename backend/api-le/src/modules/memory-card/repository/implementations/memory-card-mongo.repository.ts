@@ -20,6 +20,19 @@ export class MemoryCardMongoRepository implements IMemoryCardRepository {
         return this.memoryCardModel.find()
     }
 
+    getAllByUserId(id_user: string) {
+        const query = {};
+        query['id_user'] = id_user;
+        return this.memoryCardModel.find(query);
+    }
+
+    getAllByDate(id_user: string, currentDate: Number) {
+        const query = {}
+        query['id_user'] = id_user;
+        query['date_view'] = {$not: {$gt: currentDate}};
+        return this.memoryCardModel.find(query);
+    }
+
     getById(id: string) {
         return this.memoryCardModel.findById(id)
     }
@@ -30,7 +43,12 @@ export class MemoryCardMongoRepository implements IMemoryCardRepository {
             {
                 word: dto.word,
                 meanings: dto.meanings,
-                phrases: dto.phrases
+                phrases: dto.phrases,
+                date_view: dto.date_view,
+                description: dto.description,
+                level: dto.level,
+                step: dto.step,
+                id_user: dto.id_user,
             }
         )
     }
