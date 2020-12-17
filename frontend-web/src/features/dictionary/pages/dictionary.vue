@@ -1,69 +1,72 @@
 <template>
 <div id="translator">
-    <nav-bar></nav-bar>
+    <nav-bar-profile></nav-bar-profile>
     <div class="content-translator">
-            <header class="header-translator">
-                <div class="first-title">
-                    <h2 class="title-login">Dicionário</h2>
-                    <img class="title-image" src="./../../../assets/svg/uKFLAG.png"></img>
-                </div>
-                
-                <h4>Tradutor inglês-português</h4>
-            </header>
-            <div class="body-translator">
-                <div class="palavra-botao">
-                    <input type="textArea" class="input" placeholder="Escreva aqui"/>
-                    <button id="button" type="submit" class="btn btn-secondary" @click="request"><strong>Traduzir</strong></button>
-                </div>
-                <div class="parte-traducoes">
-                    <div >
-                        <div class="traducoes-titulo">
-                            <label for="exampleFormControlSelect2"><h3>Traduções: </h3></label>
-                        </div>
-                        <div class="traducoes-exemplos">
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Example1</strong>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Example2</strong>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Example3</strong>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Example4</strong>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- </select> -->
+        <header class="header-translator">
+            <div class="first-title">
+                <h1 class="title-login"> <i class='fas fa-angle-double-right'></i> Dicionário</h1>
+                <!-- <img class="title-image" src="./../../../assets/svg/uKFLAG.png"> -->
+            </div>
+            <h4>Tradutor inglês-português</h4>
+        </header>
+        <div class="body-translator">
+            <div class="palavra-botao">
+                <input type="textArea" class="input" placeholder="Escreva aqui" />
+                <button id="button" type="submit" class="btn btn-secondary" @click="request"><strong>Traduzir</strong></button>
+            </div>
+            <div class="parte-traducoes">
+                <div>
+                    <div class="traducoes-titulo">
+                        <label for="exampleFormControlSelect2">
+                            <h3>Traduções: </h3>
+                        </label>
                     </div>
-                    <div >
-                        <div class="traducoes-titulo">
-                            <label for="exampleFormControlSelect2"><h3>Exemplos: </h3></label>
-                        </div>
-                        <div class="exemplos-exemplos">
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Frase 1 com a palavra da tradução</strong>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <strong>Frase 2 com a palavra da tradução</strong>
-                                </div>
+                    <div class="traducoes-exemplos">
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Example1</strong>
                             </div>
                         </div>
-                        <!-- </select> -->
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Example2</strong>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Example3</strong>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Example4</strong>
+                            </div>
+                        </div>
                     </div>
+                    <!-- </select> -->
                 </div>
-                    <!-- <div class="form-group">
+                <div>
+                    <div class="traducoes-titulo">
+                        <label for="exampleFormControlSelect2">
+                            <h3>Exemplos: </h3>
+                        </label>
+                    </div>
+                    <div class="exemplos-exemplos">
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Frase 1 com a palavra da tradução</strong>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <strong>Frase 2 com a palavra da tradução</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </select> -->
+                </div>
+            </div>
+            <!-- <div class="form-group">
                         <label id="labelForm" >Email</label>
                         <input type="email" class="form-control" id="" placeholder="Digite seu email">
                     </div>
@@ -72,9 +75,8 @@
                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Digite sua senha">
                     </div>
                     <button id="button" type="submit" class="btn btn-secondary">Entrar</button> -->
-            </div>
         </div>
-    <Footer></Footer>
+    </div>
 </div>
 </template>
 
@@ -82,6 +84,8 @@
 import Footer from '@/features/footer/pages/Footer'
 import Header from '@/features/header/pages/Header'
 import NavBar from '@/features/navbar/pages/NavBar'
+import NavBarProfile from '@/features/navbar/pages/NavBarProfile'
+
 import axios from 'axios'
 
 export default {
@@ -89,15 +93,16 @@ export default {
   components: {
     NavBar,
     Header,
-    Footer
+    Footer,
+    NavBarProfile
   },
   data () {
     return {
-        answer: ""
+      answer: ''
     }
   },
   methods: {
-    async request() {
+    async request () {
       const options = {
         method: 'POST',
         url: 'https://google-translate1.p.rapidapi.com/language/translate/v2',
@@ -112,38 +117,41 @@ export default {
           source: 'en',
           target: 'es'
         }
-      };
+      }
       await axios.request(options).then(function (response) {
-        console.log("Resposta")
+        console.log('Resposta')
         console.log(response.data)
-        this.answer = response.data;
+        this.answer = response.data
         return response.data
       }).catch(function (error) {
         console.error(error)
       })
       return null
-    },
+    }
   }
 }
 </script>
 
 <style>
-
 * {
     margin: 0px;
     padding: 0px;
+    font-family: 'Poppins', sans-serif;
 }
-
+h1 {
+    font-size: 23px;
+    font-weight: 600;
+}
 .header-translator {
-    margin-top: 200px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    text-align: start;
 }
-
 .first-title {
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .title-image {
@@ -184,7 +192,6 @@ export default {
     justify-content: space-between;
 }
 
-
 .traducoes-titulo {
     width: 1000%;
     margin: 5px;
@@ -193,7 +200,7 @@ export default {
 }
 
 .card {
-     font-size: 15px;
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     padding: 10px 25px 10px 25px;
@@ -217,7 +224,7 @@ export default {
     border-radius: 5px;
 }
 
-.card:hover{
+.card:hover {
     background-color: #5F48EA;
 }
 
@@ -234,7 +241,7 @@ export default {
     display: flex;
     margin: 5px;
     background-color: #7b68ee;
-    align-items: center;    
+    align-items: center;
     color: white
 }
 

@@ -99,15 +99,21 @@ export default {
           localStorage.removeItem(_refresh_token)
           reject(err)
         })
-      })
+      }) 
     },
+    logout({commit}) {
+      return new Promise((resolve, reject) => {
+        console.log("deslogou")
+        commit('logout')
+        localStorage.removeItem(_access_token)
+        localStorage.removeItem(_refresh_token)
+        // verificar se esta retirando dos headers dps
+        delete Axios.defaults.headers.common['Authorization']
+        resolve()
+      })
+    }
   },
-    // state: {
-
-    //   },
-    //   mutations: {
-
-    //   },
+    
     //   actions: {
     //     login({ commit }, user) {
     //       return new Promise((resolve, reject) => {
@@ -164,16 +170,5 @@ export default {
     //           })
     //       })
     //     },
-    //     logout({ commit }) {
-    //       return new Promise((resolve, reject) => {
-    //         commit('logout')
-    //         localStorage.removeItem('access_token')
-    //         delete axios.defaults.headers.common['Authorization']
-    //         resolve()
-    //       })
-    //     }
     //   },
-    //   getters: {
-
-    //   }
 }

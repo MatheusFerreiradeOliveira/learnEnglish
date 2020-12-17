@@ -47,6 +47,7 @@ export default {
         password: this.password
       })
       this.password = ''
+      this.toForum()
     },
     typeprofiles: function () {
       console.log('Passou')

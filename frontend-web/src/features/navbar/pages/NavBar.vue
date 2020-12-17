@@ -30,12 +30,14 @@ window.onscroll = function () {
 }
 
 function scrollFunction () {
-  if (document.body.scrollTop > 120 || document.documentElement.scrollTop > 120) {
-    document.getElementById('navbar-main').style.backgroundColor = 'rgba(255, 255, 255, 1)'
-    document.getElementById('navbar-main').style.boxShadow = '0px 3px 5px rgb(120, 120, 120)'
-  } else {
-    document.getElementById('navbar-main').style.backgroundColor = 'rgb(255, 255, 255, 0 )'
-    document.getElementById('navbar-main').style.boxShadow = '0px 0px 0px rgba(120, 120, 120,0)'
+  if (document.getElementById('navbar-main')) {
+    if (document.body.scrollTop > 120 || document.documentElement.scrollTop > 120) {
+      document.getElementById('navbar-main').style.backgroundColor = 'rgba(255, 255, 255, 1)'
+      document.getElementById('navbar-main').style.boxShadow = '0px 3px 5px rgb(120, 120, 120)'
+    } else {
+      document.getElementById('navbar-main').style.backgroundColor = 'rgb(255, 255, 255, 0 )'
+      document.getElementById('navbar-main').style.boxShadow = '0px 0px 0px rgba(120, 120, 120,0)'
+    }
   }
 }
 </script>
@@ -50,8 +52,8 @@ function scrollFunction () {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* background-color: rgb(250, 250, 255);
-    box-shadow: 0px 3px 5px rgb(120, 120, 120);*/
+    background-color: rgb(250, 250, 255);
+    box-shadow: 0px 3px 5px rgb(120, 120, 120);
     padding-bottom: 5px;
     padding-top: 5px;
 }
