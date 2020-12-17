@@ -196,6 +196,7 @@ div.header-title-and-btn{
     display: flex;
     flex-direction: column;
 }
+
 .row{
     display: flex;
     flex-direction: row;

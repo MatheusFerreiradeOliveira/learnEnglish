@@ -8,6 +8,8 @@ import Home from '@/features/home/pages/Home'
 import Forum from '@/features/forum/pages/Forum'
 import ForumMessages from '@/features/forum/pages/ForumMessages'
 import Dictionary from '@/features/dictionary/pages/dictionary'
+import Profile from '@/features/profile/pages/profile'
+
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +55,11 @@ export default new Router({
       path: '/dictionary',
       name: 'Dictionary',
       component: Dictionary
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 
