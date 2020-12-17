@@ -6,6 +6,7 @@ import Cadastro from '@/features/cadastro/pages/cadastro'
 import Home from '@/features/home/pages/Home'
 import Forum from '@/features/forum/pages/Forum'
 import ForumMessages from '@/features/forum/pages/ForumMessages'
+import Dictionary from '@/features/dictionary/pages/dictionary'
 Vue.use(Router)
 
 export default new Router({
@@ -41,6 +42,11 @@ export default new Router({
       path: '*',
       name: 'Error-404',
       component: Error404
+    },
+    {
+      path: '/dictionary',
+      name: 'Dictionary',
+      component: Dictionary
     }
   ]
 
