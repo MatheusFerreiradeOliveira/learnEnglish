@@ -16,14 +16,18 @@ import { UpdateService } from './usecases/update/update.service';
 import { UpdateUseCase } from './usecases/update/update.usecase';
 import { MeaningModule } from '../significado/meaning.module';
 import { PhraseModule } from '../frase/phrase.module';
+import { UserModule } from '../user/user.module';
+import { FindAllByIdUserService } from './usecases/find-all-by-id-user/find-all-by-id-user.service';
+import { FindAllByDateService } from './usecases/find-all-by-date/find-all-by-date.service';
+import { FindAllByIdUserUseCase } from './usecases/find-all-by-id-user/find-all-by-id-user.usecase';
+import { FindAllByDateUseCase } from './usecases/find-all-by-date/find-all-by-date.usecase';
 
 @Module({
   imports: [
     MongooseModule.forFeature([
       {name: MemoryCard.name, schema: MemoryCardSchema}
     ]),
-    MeaningModule,
-    PhraseModule
+    UserModule
   ],
   providers: [
     MemoryCardService,
@@ -33,6 +37,10 @@ import { PhraseModule } from '../frase/phrase.module';
     CreateUseCase,
     FindAllService,
     FindAllUseCase,
+    FindAllByIdUserService,
+    FindAllByIdUserUseCase,
+    FindAllByDateService,
+    FindAllByDateUseCase,
     UpdateService,
     UpdateUseCase,
     DeleteService,

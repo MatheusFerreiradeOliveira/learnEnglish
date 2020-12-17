@@ -41,13 +41,11 @@ export class MemoryCardController {
   getAll(@Req() req: Request, @Res() res: Response) {
     return this.findAllService.handle(req, res);
   }
-
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   getById(@Param('id') id: string, @Req() req: Request, @Res() res: Response) {
     return this.findByIdService.handle(id, req, res);
   }
-
   @UseGuards(JwtAuthGuard)
   @Put(':id')
   update(
@@ -58,7 +56,6 @@ export class MemoryCardController {
   ) {
     return this.updateService.handle(id, dto, req, res);
   }
-  
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   delete(@Param('id') id: string, @Req() req: Request, @Res() res: Response) {
