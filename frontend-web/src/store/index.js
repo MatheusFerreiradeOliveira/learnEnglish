@@ -9,6 +9,7 @@ const store = new Vuex.Store({
   },
   actions:{},
   state: {
+    
     count: 0
   },
   mutations: {

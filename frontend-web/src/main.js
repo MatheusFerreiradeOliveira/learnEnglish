@@ -8,13 +8,13 @@ import store from './store'
 import * as request from "./core/services";
 
 Vue.config.productionTip = false
-Vue.prototype.$http = Axios;
 Vue.prototype.$request = request;
-const accessToken = localStorage.getItem('access_token');
-const refreshToken = localStorage.getItem('refresh_token');
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
-}
+// Vue.prototype.$http = Axios;
+// const accessToken = localStorage.getItem('access_token');
+// const refreshToken = localStorage.getItem('refresh_token');
+// if (accessToken) {
+  // Vue.prototype.$request.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+// }
 
 /* eslint-disable no-new */
 new Vue({
