@@ -20,6 +20,7 @@ import { Request, Response } from 'express';
 import { JwtAuthGuard } from '../../core/auth/service/jwt.guard';
 import { DeleteUserService } from './usecases/delete/delete-user.service';
 import { FindAllUsersService } from './usecases/find-all/find-all-users.service';
+import { FindUserByEmailService } from './usecases/find-by-email/find-user-by-email.service' 
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UpdateUserService } from './usecases/update/update-user.service';
 
@@ -30,6 +31,7 @@ export class UserController {
     private deleteUserService: DeleteUserService,
     private findAllUsersService: FindAllUsersService,
     private updateUserService: UpdateUserService,
+    private findUserByEmailService: FindUserByEmailService
   ) {}
 
   @Post()
@@ -46,6 +48,11 @@ export class UserController {
     @Res() res: Response,
   ) {
     return this.findAllUsersService.handle(page, limit, res);
+  }
+
+  @Get('/:email')
+  async findUserByEmail(@Param('email') email: string) {
+    return this.findUserByEmailService.handle(email);
   }
 
   //@UseGuards(JwtAuthGuard)
