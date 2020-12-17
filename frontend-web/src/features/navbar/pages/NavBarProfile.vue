@@ -25,11 +25,12 @@ export default {
   data () {
     return {
       'itens_menu': [
-        {name: 'Aprender', link: '*', css: 'blue'},
-        {name: 'Cards', link: '*', css: 'yellow'},
+        // {name: 'Aprender', link: '*', css: 'blue'},
+        {name: 'Cards', link: '', css: 'yellow'},
         {name: 'Fórum', link: 'Forum', css: 'green'},
-        {name: 'Dicionário', link: '*', css: 'pink'},
-        {name: 'Perfil', link: '*', css: 'white'}
+        {name: 'Dicionário', link: 'Dictionary', css: 'pink'},
+        {name: 'Perfil', link: '', css: 'white'},
+        {name: 'Sair', link: 'Logout', css: 'black'}
       ]
     }
   }
@@ -85,6 +86,11 @@ div.items ul li{
     font-weight: 600;
     border-radius: 3px;
 
+}
+div.items ul li.black:hover{
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    background-color: #fff;
+    color: #dd1233;
 }
 
 div.items ul li.white:hover{
